@@ -5,5 +5,5 @@
   path = modules/toolchain
   url = https://github.com/anselmes/toolchain.git
 [submodule "modules/sandbox"]
-	path = modules/sandbox
-	url = https://github.com/sanselme/sandbox.git
+  path = modules/sandbox
+  url = https://github.com/sanselme/sandbox.git
