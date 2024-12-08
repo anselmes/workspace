@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.iconTheme": "vscode-icons",
+    "copyrightInserter.license": "gpl3",
+    "githubPullRequests.pullBranch": "always",
+    "git.timeline.showUncommitted": true,
+    "github.gitProtocol": "ssh",
+    "gitlens.views.worktrees.files.layout": "list",
+    "yaml.schemas": {
+      "https://json.schemastore.org/yamllint.json": "*.yaml"
+    }
+  }
+}
