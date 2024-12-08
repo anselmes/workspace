@@ -1,6 +1,26 @@
 [submodule "modules/config"]
   path = modules/config
-  url = https://github.com/anselmes/config.git
+  url = git@github.com:anselmes/config.git
+  branch = update
 [submodule "modules/toolchain"]
   path = modules/toolchain
-  url = https://github.com/anselmes/toolchain.git
+  url = git@github.com:anselmes/toolchain.git
+  branch = update
+[submodule "modules/images"]
+  path = modules/images
+  url = git@github.com:anselmes/images.git
+[submodule "modules/charts"]
+  path = modules/charts
+  url = git@github.com:anselmes/charts.git
+[submodule "modules/sandbox"]
+  path = modules/sandbox
+  url = git@github.com:sanselme/sandbox.git
+  branch = hello
+[submodule "modules/esp"]
+  path = modules/esp
+  url = https://github.com/espressif/esp-idf.git
+  branch = release/v5.4
+[submodule "modules/matter"]
+  path = modules/matter
+  url = https://github.com/espressif/esp-matter.git
+  branch = release/v1.3
