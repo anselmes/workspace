@@ -4,12 +4,17 @@
 [submodule "modules/toolchain"]
   path = modules/toolchain
   url = https://github.com/anselmes/toolchain.git
-[submodule "modules/sandbox"]
-  path = modules/sandbox
-  url = https://github.com/sanselme/sandbox.git
 [submodule "modules/images"]
   path = modules/images
   url = https://github.com/anselmes/images.git
+[submodule "modules/sandbox"]
+  path = modules/sandbox
+  url = https://github.com/sanselme/sandbox.git
+  branch = hello
 [submodule "modules/esp"]
   path = modules/esp
   url = https://github.com/espressif/esp-idf.git
+[submodule "modules/matter"]
+  path = modules/matter
+  url = https://github.com/espressif/esp-matter.git
+  branch = release/v1.3
