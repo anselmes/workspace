@@ -7,3 +7,9 @@
 [submodule "modules/sandbox"]
   path = modules/sandbox
   url = https://github.com/sanselme/sandbox.git
+[submodule "modules/images"]
+  path = modules/images
+  url = https://github.com/anselmes/images.git
+[submodule "modules/esp"]
+  path = modules/esp
+  url = https://github.com/espressif/esp-idf.git
