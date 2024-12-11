@@ -14,6 +14,7 @@
 [submodule "modules/esp"]
   path = modules/esp
   url = https://github.com/espressif/esp-idf.git
+  branch = release/v5.4
 [submodule "modules/matter"]
   path = modules/matter
   url = https://github.com/espressif/esp-matter.git
