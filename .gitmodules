@@ -6,14 +6,16 @@
   url = https://github.com/anselmes/toolchain.git
 [submodule "modules/images"]
   path = modules/images
-  url = https://github.com/anselmes/images.git
+  url = git@github.com:anselmes/images.git
+  branch = hello
 [submodule "modules/sandbox"]
   path = modules/sandbox
-  url = https://github.com/sanselme/sandbox.git
+  url = git@github.com:sanselme/sandbox.git
   branch = hello
 [submodule "modules/esp"]
   path = modules/esp
   url = https://github.com/espressif/esp-idf.git
+  branch = release/v5.4
 [submodule "modules/matter"]
   path = modules/matter
   url = https://github.com/espressif/esp-matter.git

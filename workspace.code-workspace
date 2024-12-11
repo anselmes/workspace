@@ -2,6 +2,12 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "modules/images"
+    },
+    {
+      "path": "modules/sandbox"
     }
   ],
   "settings": {
