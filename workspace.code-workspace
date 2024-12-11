@@ -2,17 +2,35 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "modules/config"
+    },
+    {
+      "path": "modules/toolchain"
+    },
+    {
+      "path": "modules/images"
+    },
+    {
+      "path": "modules/charts"
+    },
+    {
+      "path": "modules/sandbox"
     }
   ],
   "settings": {
     "workbench.iconTheme": "vscode-icons",
     "copyrightInserter.license": "gpl3",
-    "githubPullRequests.pullBranch": "always",
     "git.timeline.showUncommitted": true,
     "github.gitProtocol": "ssh",
     "gitlens.views.worktrees.files.layout": "list",
     "yaml.schemas": {
       "https://json.schemastore.org/yamllint.json": "*.yaml"
+    },
+    "files.associations": {
+      "module.h": "c",
+      "fs.h": "c"
     }
   }
 }
