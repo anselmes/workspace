@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+secretGenerator:
+  - name: cloudflare
+    namespace: cloudflare
+    files:
+      - ACCOUNT_ID=cloudflare/id.txt
+      - TOKEN=cloudflare/token.txt
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    type: generated
+  annotations:
+    note: generated

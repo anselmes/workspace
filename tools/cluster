@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CONFIG="${1:-hack/cluster.yaml}"
+KUBECONFIG="${KUBECONFIG:-hack/kubeconfig.yaml}"
+
+# fixme: ssh and create dirs
+# mkdir -p /var/lib/k0s/manifests/crds /var/lib/k0s/pki
+# touch  /var/lib/k0s/pki/admin.conf
+
+# fixme: ssh and add crds
+# k0s kubectl kustomize https://github.com/kubernetes-csi/external-snapshotter/client/config/crd?ref=v8.1.0 > /var/lib/k0s/manifests/crds/external-snapshotter.yaml
+# k0s kubectl kustomize https://github.com/kubernetes-sigs/gateway-api/config/crd/experimental?ref=v1.2.0 > /var/lib/k0s/manifests/crds/gateway-api.yaml
+
+# create cluster
+k0sctl apply --config "${CONFIG}"
+
+# export kubeconfig
+k0sctl kubeconfig --config hack/cluster.yaml  > "${KUBECONFIG}"
+chmod 0600 "${KUBECONFIG}"
+
+kubectl --kubeconfig "${KUBECONFIG}" cluster-info

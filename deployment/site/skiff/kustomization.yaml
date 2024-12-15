@@ -1,0 +1,91 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+components:
+  - ../../component
+  - ../../component/cloudflare
+  - ../../component/cruiser
+  - ../../component/harbor
+resources:
+  - ../../resource/addon/homebridge
+  - ../../resource/addon/omada
+  - ../../resource/core/cni
+  - ../../resource/core/csi/openebs
+  - network
+  - security
+patches:
+  - patch: |
+      - op: add
+        path: /spec/values
+        value: |
+          kubeProxyReplacement: true
+          l2announcements:
+            enabled: true
+          gatewayAPI:
+            enabled: true
+            gatewayClass:
+              create: "true"
+          operator:
+            replicas: 1
+    target:
+      kind: Chart
+      name: k0s-addon-chart-cilium
+  - patch: |
+      - op: add
+        path: /spec/values
+        value: |
+          cluster:
+            name: sandbox
+          metrics:
+            enabled: false
+          logs:
+            enabled: false
+            pod_logs:
+              enabled: false
+            cluster_events:
+              enabled: false
+          traces:
+            enabled: false
+          profiles:
+            enabled: false
+          configAnalysis:
+            enabled: false
+          kube-state-metrics:
+            enabled: true
+          prometheus-node-exporter:
+            enabled: true
+          prometheus-operator-crds:
+            enabled: true
+          opencost:
+            enabled: false
+          alloy:
+            enabled: true
+    target:
+      kind: Chart
+      name: k0s-addon-chart-k8s-monitoring
+  - patch: |
+      - op: add
+        path: /spec/values
+        value: |
+          env:
+            TZ: America/Toronto
+          persistence:
+            config:
+              enabled: true
+    target:
+      kind: Chart
+      name: homebridge
+  - patch: |
+      - op: add
+        path: /spec/values
+        value: |
+          env:
+            TZ: America/Toronto
+          persistence:
+            data:
+              enabled: true
+              accessMode: ReadWriteOnce
+              size: 5Gi
+    target:
+      kind: Chart
+      name: omada-controller
