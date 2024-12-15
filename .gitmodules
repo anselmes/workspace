@@ -20,3 +20,6 @@
   path = modules/matter
   url = https://github.com/espressif/esp-matter.git
   branch = release/v1.3
+[submodule "modules/charts"]
+	path = modules/charts
+	url = git@github.com:anselmes/charts
