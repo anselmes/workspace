@@ -1,0 +1,65 @@
+<domain type='hvf' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+  <name>sandbox</name>
+  <uuid>1aa8d13f-051c-436e-b07a-9b7b5cdd18d5</uuid>
+  <metadata>
+    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
+      <libosinfo:os id="http://ubuntu.com/ubuntu/24.04"/>
+    </libosinfo:libosinfo>
+  </metadata>
+  <os>
+    <type arch='aarch64' machine='virt-9.2'>hvm</type>
+    <loader readonly='yes' type='pflash' format='raw'>/var/lib/libvirt/firmware/edk2-aarch64-code.fd</loader>
+    <nvram format='raw'>/var/lib/libvirt/firmware/edk2-arm-vars.fd</nvram>
+    <boot dev='hd'/>
+    <bootmenu enable='yes'/>
+  </os>
+  <features>
+    <acpi/>
+    <gic version="3"/>
+  </features>
+  <clock offset='utc'/>
+  <on_crash>destroy</on_crash>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <cpu mode='host-passthrough' check='none'/>
+  <memory unit='KiB'>8388608</memory>
+  <devices>
+    <emulator>/opt/homebrew/bin/qemu-system-aarch64</emulator>
+    <console type="pty"/>
+    <serial type="pty"/>
+    <input type='keyboard' bus='virtio'/>
+    <input type='tablet' bus='virtio'/>
+    <watchdog model='i6300esb' action='reset'/>
+    <memballoon model='virtio'/>
+    <disk type='file' device='cdrom'>
+      <source file='/var/lib/libvirt/boot/cloudinit.iso'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
+    <disk type='file' device='disk'>
+      <source file='/var/lib/libvirt/images/sandbox.qcow2'/>
+      <backingStore type='file'>
+        <source file='/var/lib/libvirt/images/noble-server-cloudimg-arm64.img'/>
+      </backingStore>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <channel type="unix">
+      <target type="virtio" name="org.qemu.guest_agent.0"/>
+    </channel>
+    <channel type="unix">
+      <target type="virtio" name="org.libguestfs.channel.0"/>
+    </channel>
+    <tpm model="tpm-tis">
+      <backend type="emulator" version="2.0"/>
+    </tpm>
+    <rng model="virtio">
+      <backend model="random">/dev/urandom</backend>
+    </rng>
+  </devices>
+  <qemu:commandline>
+    <qemu:arg value='-netdev'/>
+    <qemu:arg value='vmnet-shared,id=oam'/>
+    <qemu:arg value='-device'/>
+    <qemu:arg value='virtio-net-pci,id=net1,netdev=oam,addr=0x4,mac=00:00:ba:be:fa:ce'/>
+  </qemu:commandline>
+</domain>
