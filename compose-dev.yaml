@@ -5,16 +5,20 @@ services:
     privileged: true
     stdin_open: true
     tty: true
+    cgroup: host
+    hostname: sandbox
     user: root # note: required for /sbin/init
     working_dir: /home/devcontainer
+    network_mode: bridge
     volumes:
       - .:/home/devcontainer
-    ports: []
-    # - 10022:22
-    # - 10080:80
-    # - 10443:443
-    # - 15900:5900
-    # - 16443:6443
+      - /var/lib/k0s
+    ports:
+      - 443:443
+      - 6443:6443
+      - 80:80
+      # - 10022:22
+      # - 15900:5900
     networks:
       devcontainer: {}
 networks:
